@@ -12,7 +12,7 @@ var DataRequest = React.createClass({displayName: "DataRequest",
 		return {data: null};
 	},
 	loadTrackData: function () {
-    $.get('http://api.tvmaze.com/singlesearch/shows?q=girls', function (data) {
+    $.get('http://api.tvmaze.com/singlesearch/shows?q='+this.props.show, function (data) {
       this.setState({data: data});
     }.bind(this));
   },
@@ -63,8 +63,7 @@ var Hello = React.createClass({displayName: "Hello",
 	render: function() {
 		return (
 			React.createElement("div", {className: "todo"}, 
-				React.createElement("h3", null, "ToDo"), 
-				React.createElement(DataRequest, null), 
+				React.createElement(DataRequest, {show: "game of thrones"}), 
 				React.createElement(ButtonClick, null), 
 				React.createElement(Letters, {items: this.state.items}), 
 				React.createElement("form", {onSubmit: this.handleSubmit}, 

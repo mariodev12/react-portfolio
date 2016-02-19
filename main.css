@@ -1,0 +1,15 @@
+.name-image{
+  float: left;
+}
+.content-data {
+  float: right;
+  width: 1000px;
+}
+.unfollow {
+  color: white;
+  font-size: 18px;
+}
+.follow {
+  color: red;
+  font-size: 18px;
+}

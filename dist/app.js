@@ -2,6 +2,7 @@
 /** @jsx React.DOM */
 /*global require, module */
 var React = require('react');
+var ReactDOM = require('react-dom');
 var Loading = require('./loading.js');
 var ButtonClick = require('./buttonClick.js');
 var NavbarSearch = require('./Navbar-Search.js');
@@ -86,7 +87,7 @@ var Hello = React.createClass({displayName: "Hello",
 		return (
 			React.createElement("div", null, 
 				React.createElement(NavbarSearch, null), 
-				React.createElement(Calendar, null), 
+				React.createElement(App, null), 
 				React.createElement("div", {className: "container-fluid"}, 
 					React.createElement(DataRequest, {show: "the simpsons"}), 
 					React.createElement("hr", null)
@@ -95,9 +96,91 @@ var Hello = React.createClass({displayName: "Hello",
 		);
 	}
 });
+
+var App = React.createClass({displayName: "App",
+
+    getInitialState: function() {
+        return {
+            searchResults: []
+        }
+    },
+
+    showResults: function(response){
+        this.setState({
+            searchResults: response.results
+        })
+    },
+
+    search: function(URL){
+        $.ajax({
+            type: "GET",
+            dataType: 'jsonp',
+            url: URL,
+            success: function(response){
+                this.showResults(response);
+            }.bind(this)
+        });
+    },
+
+    render: function(){
+        return (
+            React.createElement("div", null, 
+                React.createElement(SearchBox, {search: this.search}), 
+                React.createElement(Results, {searchResults: this.state.searchResults})
+            )
+        );
+    },
+
+
+});
+
+var SearchBox = React.createClass({displayName: "SearchBox",
+
+    render: function(){
+        return (
+            React.createElement("div", null, 
+                React.createElement("input", {type: "text", ref: "query"}), 
+                React.createElement("select", {ref: "category"}, 
+                    React.createElement("option", {value: "software"}, "Apps"), 
+                    React.createElement("option", {value: "movie"}, "Films")
+                ), 
+                React.createElement("input", {type: "submit", onClick: this.createAjax})
+            )
+        );
+    },
+
+    createAjax: function(){
+        var query    = ReactDOM.findDOMNode(this.refs.query).value;
+        var category = ReactDOM.findDOMNode(this.refs.category).value;
+        var URL      = 'https://itunes.apple.com/search?term=' + query +'&country=us&entity=' + category;
+        this.props.search(URL)
+    }
+
+});
+
+var Results = React.createClass({displayName: "Results",
+
+    render: function(){
+        var resultItems = this.props.searchResults.map(function(result) {
+            return React.createElement(ResultItem, {key: result.trackId, trackName: result.trackName})
+        });
+        return(
+            React.createElement("ul", null, 
+                resultItems
+            )
+        );
+    }
+});
+
+var ResultItem = React.createClass({displayName: "ResultItem",
+
+    render: function(){
+        return React.createElement("li", null, this.props.trackName);
+    }
+});
 module.exports = Hello;
 
-},{"./Navbar-Search.js":2,"./buttonClick.js":3,"./calendar.js":4,"./loading.js":6,"react":164}],2:[function(require,module,exports){
+},{"./Navbar-Search.js":2,"./buttonClick.js":3,"./calendar.js":4,"./loading.js":6,"react":164,"react-dom":35}],2:[function(require,module,exports){
 var React = require('react');
 
 var NavbarSearch = React.createClass({displayName: "NavbarSearch",

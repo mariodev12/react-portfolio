@@ -1,0 +1,31 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 93%;
+  z-index: 3;
+  transform: translateX(-50%);
+  padding: 16px 0 0;
+  background: #fff;
+  border-bottom: 3px solid #ccc;
+}
+nav {
+  position: relative;
+  float: right;
+  margin-right: 23px;
+  z-index: 2;
+}
+nav li {
+  display: inline-block;
+  margin-left: 23px;
+}
+nav ul {
+  margin-top: 14px !important;
+}
+header img {
+  position: absolute;
+  left: 50%;
+  width: 38px;
+  z-index: 2;
+  transform: translateX(-50%);
+}

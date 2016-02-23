@@ -1,3 +1,9 @@
+
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic);
+body {
+  font-family: 'PT Sans', sans-serif !important;
+}
+
 header {
   position: fixed;
   top: 0;
@@ -31,4 +37,71 @@ header img {
 }
 .page {
   margin-top: 65px;
+}
+
+.intro.message {
+  position: fixed;
+  width: 50%;
+  top: 15%;
+}
+.message {
+  font-size: 36px;
+}
+.message h1 {
+  margin-top: 0 !important;
+}
+.message .title-intro {
+  font-weight: 100;
+}
+.message .subtitle-intro {
+  font-size: 63px;
+  font-weight: 400;
+}
+.message .intro-content {
+  position: absolute;
+  width: 610px;
+  top: 108px;
+}
+/* Animate Title intro */
+.title-intro.animate {
+  animation-delay: .9s;
+  animation-duration: .9s;
+  animation-fill-mode: both;
+  animation-name: animate;
+}
+@keyframes animate {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Animate Title intro */
+
+/* Animate frontend-frase intro */
+.subtitle-intro.animate-2 {
+  animation-delay: 1.4s;
+  animation-duration: 1.4s;
+  animation-fill-mode: both;
+  animation-name: animate;
+}
+.message .subtitle2-intro{
+  font-size: 63px;
+}
+.subtitle2-intro.animate-3 {
+  animation-delay: 1.9s;
+  animation-duration: 1.9s;
+  animation-fill-mode: both;
+  animation-name: animate;
+}
+.intro-portfolio-enter {
+  opacity: 0.01;
+}
+
+.intro-portfolio-enter.intro-portfolio-enter-active {
+  opacity: 1;
+  transition: opacity 5000ms ease-in;
 }

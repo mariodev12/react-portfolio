@@ -135,6 +135,9 @@ var Home = React.createClass({displayName: "Home",
              React.createElement("span", null, "&"), " ", React.createElement("span", null, "Javascript"), " ", React.createElement("span", null, "entusiast"), "."
             )
           )
+        ), 
+        React.createElement("div", {className: "mostrecentWork"}
+
         )
       )
     );

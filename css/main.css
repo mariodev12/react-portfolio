@@ -97,6 +97,16 @@ header img {
   animation-fill-mode: both;
   animation-name: animate;
 }
+
+.mostrecentWork {
+  position: relative;
+  float: right;
+  width: 37%;
+  border: 1px solid #ccc;
+}
+
+
+
 .intro-portfolio-enter {
   opacity: 0.01;
 }

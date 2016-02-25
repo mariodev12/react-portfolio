@@ -102,16 +102,31 @@ header img {
   position: relative;
   float: right;
   width: 37%;
-  border: 1px solid #ccc;
+  animation-delay: 1.9s;
+  animation-duration: 1.9s;
+  animation-fill-mode: both;
+  animation-name: animate;
 }
-
-
-
-.intro-portfolio-enter {
-  opacity: 0.01;
+.work-selection {
+    position: absolute;
+    width: 71%;
+    max-width: 264px;
+    padding-top: 60px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
 }
-
-.intro-portfolio-enter.intro-portfolio-enter-active {
-  opacity: 1;
-  transition: opacity 5000ms ease-in;
+.work-area {
+    position: relative;
+    background-color: white;
+    border: 7px solid;
+    margin-bottom: 80px;
+    height: 300px;
+}
+.work-area .counterWork {
+    left: -54px;
+    position: absolute;
+    font-size: 35px;
+    color: #ccc;
 }
